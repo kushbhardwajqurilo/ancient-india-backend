@@ -6,6 +6,7 @@ export const apiLimiter = rateLimit({
   max: 100, // Limit each IP to 100 requests per windowMs
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  validate: { trustProxy: false },
   message: {
     status: 'error',
     message: 'Too many requests from this IP, please try again after 15 minutes.'
@@ -18,6 +19,7 @@ export const strictLimiter = rateLimit({
   max: 5, // Limit each IP to 10 requests per windowMs (1 hour)
   standardHeaders: true,
   legacyHeaders: false,
+  validate: { trustProxy: false },
   message: {
     status: 'error',
     message: 'Too many subscription attempts from this IP, please try again after an hour.'
