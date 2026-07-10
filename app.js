@@ -11,7 +11,7 @@ import { apiLimiter } from './src/middlewares/rateLimiter.mjs';
 dotenv.config();
 
 const app = express();
-
+app.set("trust proxy", true)
 // Middleware
 app.use(helmet());
 app.use(compression());
